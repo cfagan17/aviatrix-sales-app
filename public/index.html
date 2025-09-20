@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviatrix Sales Enablement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="aviatrix-logo.svg" alt="Aviatrix" class="logo">
+            <h1>CNSF Sales Enablement</h1>
+            <p>Account Intelligence & Sales Coaching</p>
+        </header>
+
+        <div class="input-section">
+            <form id="account-form">
+                <div class="form-group">
+                    <label for="company">Target Company *</label>
+                    <input type="text" id="company" name="company" required placeholder="e.g., Bank of America">
+                </div>
+
+                <div class="form-group">
+                    <label for="contacts">Key Contacts (Optional)</label>
+                    <input type="text" id="contacts" name="contacts" placeholder="e.g., John Smith (CISO), Jane Doe (CIO)">
+                </div>
+
+                <div class="form-group">
+                    <label for="competitors">Known Competitors (Optional)</label>
+                    <input type="text" id="competitors" name="competitors" placeholder="e.g., Palo Alto Networks, Cisco">
+                </div>
+
+                <button type="submit" id="generate-btn">Generate Account Plan</button>
+            </form>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Generating Deep Research</p>
+        </div>
+
+        <div id="analyst-guide" class="analyst-guide" style="display: none;">
+            <div class="guide-content">
+                <h2>Your Team of Expert Analysts</h2>
+                <p>You have access to a team of 4 analysts:</p>
+                <ol>
+                    <li><strong>Aviatrix Sales Analyst</strong>: An expert sales analyst has created an Account Plan for you, focused on a strategy for selling CNSF.</li>
+                    <li><strong>Competitor Sales Analyst</strong>: A sales analyst from <span id="competitor-name-guide"></span> who will share how they position against Aviatrix.</li>
+                    <li><strong><span id="company-analyst-name"></span> Security Analyst</strong>: The analyst working for the CISO at <span id="company-name-guide"></span> who can share their security vendor strategy.</li>
+                    <li><strong>Sales Coach</strong>: An expert sales coach who can help you practice selling to the <span id="company-name-coach"></span> security leader.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="outputs" class="outputs" style="display: none;">
+            <section id="account-plan-section" class="output-section">
+                <h2>1. Aviatrix Sales Analyst - Account Plan</h2>
+                <div id="account-plan" class="output-content"></div>
+                <div class="analyst-chat" id="sales-analyst-chat" style="display: none;">
+                    <h3>Ask the Sales Analyst</h3>
+                    <div class="chat-container">
+                        <div id="sales-analyst-messages" class="chat-messages"></div>
+                        <div class="chat-input-area">
+                            <textarea id="sales-analyst-input" placeholder="Ask follow-up questions or request additional analysis..." rows="2"></textarea>
+                            <button id="sales-analyst-send">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="battlecards-section" class="output-section" style="display: none;">
+                <h2>2. <span id="competitor-title"></span> Sales Analyst - Battle Card</h2>
+                <div id="battlecards" class="output-content"></div>
+                <div class="analyst-chat" id="competitor-analyst-chat" style="display: none;">
+                    <h3>Ask the <span id="competitor-chat-title"></span> Sales Analyst</h3>
+                    <div class="chat-container">
+                        <div id="competitor-analyst-messages" class="chat-messages"></div>
+                        <div class="chat-input-area">
+                            <textarea id="competitor-analyst-input" placeholder="Ask how they position against Aviatrix or handle objections..." rows="2"></textarea>
+                            <button id="competitor-analyst-send">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="analyst-section" class="output-section" style="display: none;">
+                <h2>3. <span id="company-analyst-title"></span> Security Analyst Report</h2>
+                <div id="analyst-report" class="output-content"></div>
+                <div class="analyst-chat" id="company-analyst-chat" style="display: none;">
+                    <h3>Ask the <span id="company-analyst-chat-title"></span> Analyst</h3>
+                    <div class="chat-container">
+                        <div id="company-analyst-messages" class="chat-messages"></div>
+                        <div class="chat-input-area">
+                            <textarea id="company-analyst-input" placeholder="Ask about their security priorities or vendor evaluation..." rows="2"></textarea>
+                            <button id="company-analyst-send">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="chat-section" class="output-section" style="display: none;">
+                <h2>4. Sales Coaching Session</h2>
+                <div class="chat-container">
+                    <div id="chat-messages" class="chat-messages"></div>
+                    <div class="chat-input-area">
+                        <textarea id="chat-input" placeholder="Enter your sales pitch or response..." rows="3"></textarea>
+                        <div class="chat-buttons">
+                            <button id="send-btn">Send</button>
+                            <button id="end-session-btn">End Session & Get Feedback</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="feedback-section" class="output-section" style="display: none;">
+                <h2>Sales Coach Feedback</h2>
+                <div id="coaching-feedback" class="output-content"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
